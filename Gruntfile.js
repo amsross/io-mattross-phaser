@@ -6,19 +6,19 @@ module.exports = function(grunt) {
 		watch: {
 			js: {
 				files: [
-					'!*.min.js',
-					'!*.swp',
-					'*.js',
-					'Gruntfile.js',
+					'!**/*.min.js',
+					'assets/js/**/*.js',
 				],
-				tasks: ['jshint'],
+				tasks: ['jshint', 'uglify'],
 				options: {
 					livereload: true,
 				},
 			},
 			img: {
 				files: [
-					'assets/img/**'
+					'!**/.DS_Store',
+					'!**/Thumbs.db',
+					'assets/img/**/*.*',
 				],
 				tasks: ['imagemin'],
 				options: {
@@ -27,8 +27,7 @@ module.exports = function(grunt) {
 			},
 			less: {
 				files: [
-					'!*.swp',
-					'assets/less/*.less'
+					'assets/less/**/*.less'
 				],
 				tasks: ['less'],
 				options: {
@@ -41,9 +40,7 @@ module.exports = function(grunt) {
 				jshintrc: true
 			},
 			all: [
-				'!*.min.js',
-				'*.js',
-				'assets/js/*.js',
+				'assets/js/**/*.js',
 				'Gruntfile.js',
 			]
 		},
@@ -52,7 +49,7 @@ module.exports = function(grunt) {
 				files: {
 					'build/js/main.min.js': [
 						'assets/bower_components/phaser/build/phaser.js',
-						'assets/js/app.js',
+						'assets/js/game.js',
 					]
 				},
 				options: {
