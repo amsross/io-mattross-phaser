@@ -1,0 +1,27 @@
+{
+  "name": "io-mattross-phaser",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/amsross/io-mattross-phaser.git"
+  },
+  "author": "Matt Ross <matt@mattross.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/amsross/io-mattross-phaser/issues"
+  },
+  "homepage": "https://github.com/amsross/io-mattross-phaser",
+  "devDependencies": {
+    "jpegtran-bin": "1.0.2",
+    "optipng-bin": "1.0.1",
+    "grunt": "0.4.5",
+    "grunt-contrib-imagemin": "0.8.1",
+    "grunt-contrib-jshint": "0.10.0",
+    "grunt-contrib-watch": "0.6.1"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "io-mattross-phaser",
+  "version": "0.0.0",
+  "homepage": "http://phaser.mattross.io",
+  "authors": [
+    "Matt Ross <matt@mattross.io>"
+  ],
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "phaser": "~2.1.1"
+  }
+}
