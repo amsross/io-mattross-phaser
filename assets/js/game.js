@@ -1,5 +1,6 @@
 /* global Phaser */
 'use strict';
+
 var w = window.innerWidth * window.devicePixelRatio,
 	h = window.innerHeight * window.devicePixelRatio;
 
@@ -45,8 +46,9 @@ var
 
 			player = game.add.sprite(32, game.world.height - 150, 'bmo');
 
-			game.camera.follow(player);
 			game.physics.arcade.enable(player);
+			game.camera.follow(player);
+			game.camera.deadzone = new Phaser.Rectangle(100, 100, (w * 0.5), (h * 0.5));
 
 			player.body.debug = true;
 			player.body.bounce.y = 0;
@@ -94,6 +96,29 @@ var
 
 			// Reset the players velocity (movement)
 			player.body.velocity.x = 0;
+
+
+			if (game.input.pointer1.isDown) {
+				if (game.input.pointer1.x > player.x) {
+					// Move to the right
+					player.body.velocity.x = 150;
+					player.animations.play('walk');
+					player.scale.x = 1;
+				} else if (game.input.pointer1.x < player.x) {
+					// Move to the left
+					player.body.velocity.x = -150;
+					player.animations.play('walk');
+					player.scale.x = -1;
+				} else {
+					// Stand still
+					player.animations.stop();
+					player.frame = 1;
+				}
+
+				if (game.input.pointer1.y < player.y && (player.body.touching.down || player.body.blocked.down || Math.ceil(player.y) === game.world.height)) {
+					player.body.velocity.y = -350;
+				}
+			}
 
 			if (cursors.left.isDown) {
 				// Move to the left
