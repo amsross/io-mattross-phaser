@@ -8,6 +8,7 @@ module.exports = function(grunt) {
 				files: [
 					'!**/*.min.js',
 					'assets/js/**/*.js',
+					'Gruntfile.js',
 				],
 				tasks: ['jshint', 'uglify'],
 				options: {
@@ -35,6 +36,19 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+		copy: {
+			main: {
+				expand: true,
+				cwd: 'assets/bower_components/phaser/build/',
+				src: [
+					'phaser.min.js',
+					'phaser.map',
+				],
+				dest: 'build/js/',
+				flatten: true,
+				filter: 'isFile',
+			},
+		},
 		jshint: {
 			options: {
 				jshintrc: true
@@ -48,7 +62,6 @@ module.exports = function(grunt) {
 			dist: {
 				files: {
 					'build/js/main.min.js': [
-						'assets/bower_components/phaser/build/phaser.js',
 						'assets/js/game.js',
 					]
 				},
@@ -98,6 +111,7 @@ module.exports = function(grunt) {
 		},
 	});
 
+	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-less');
@@ -105,6 +119,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	grunt.registerTask('default', [
+		'copy',
 		'jshint',
 		'uglify',
 		'less',
